@@ -48,7 +48,7 @@ public class WinnerPage {
 	private void initialize() {
 		frmCongratulations = new JFrame();
 		frmCongratulations.setTitle("Congratulations!");
-		frmCongratulations.getContentPane().setBackground(new Color(250, 250, 210));
+		frmCongratulations.getContentPane().setBackground(new Color(255, 102, 102));
 		frmCongratulations.setBounds(100, 100, 629, 231);
 		frmCongratulations.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCongratulations.getContentPane().setLayout(null);
@@ -85,9 +85,9 @@ public class WinnerPage {
 		
 		JLabel winnerLabel = new JLabel(getWinner() + " wins!");
 		winnerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		winnerLabel.setForeground(new Color(75, 0, 130));
-		winnerLabel.setFont(new Font("American Typewriter", Font.ITALIC, 38));
-		winnerLabel.setBounds(175, 43, 298, 57);
+		winnerLabel.setForeground(new Color(0, 0, 0));
+		winnerLabel.setFont(new Font("American Typewriter", Font.ITALIC, 70));
+		winnerLabel.setBounds(152, 25, 336, 98);
 		frmCongratulations.getContentPane().add(winnerLabel);
 	}
 	

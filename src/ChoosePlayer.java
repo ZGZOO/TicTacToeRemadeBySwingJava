@@ -18,22 +18,23 @@ public class ChoosePlayer extends JFrame {
 	private JPanel contentPane;
 	private String firstPlayer;
 	private Board afterBoard;
+	private MustSelectAPlayer mustHavePlayer;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ChoosePlayer frame = new ChoosePlayer();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ChoosePlayer frame = new ChoosePlayer();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -105,7 +106,7 @@ public class ChoosePlayer extends JFrame {
 					dispose();
 					afterBoard.setVisible(true);
 				}else {
-					MustSelectAPlayer mustHavePlayer = new MustSelectAPlayer();
+					mustHavePlayer = new MustSelectAPlayer();
 					mustHavePlayer.getFrame().setVisible(true);
 				}
 			}

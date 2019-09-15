@@ -24,6 +24,8 @@ public class Board extends JFrame {
 					button3_1,button3_2,button3_3;
 	private JLabel resultLabel;
 	private WinnerPage winnerPage;
+	private DrawPage drawPage;
+	private int clicks = 0;
 
 	/**
 	 * Launch the application.
@@ -68,8 +70,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button1_1.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button1_1.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button1_1);
@@ -80,8 +82,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button1_2.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button1_2.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button1_2);
@@ -92,8 +94,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button1_3.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button1_3.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button1_3);
@@ -104,8 +106,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button2_1.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button2_1.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button2_1);
@@ -116,8 +118,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button2_2.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();			
+				button2_2.setEnabled(false);
+				checkResult();			
 			}
 		});
 		buttonsPanel.add(button2_2);
@@ -128,8 +130,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button2_3.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button2_3.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button2_3);
@@ -140,8 +142,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button3_1.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button3_1.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button3_1);
@@ -152,8 +154,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button3_2.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button3_2.setEnabled(false);
+				checkResult();
 			}
 		});
 		buttonsPanel.add(button3_2);
@@ -164,8 +166,8 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				button3_3.setText(currentPlayer);
 				changePlayer();
-				if(someoneWin())
-					openWinnerPage();
+				button3_3.setEnabled(false);
+				checkResult();		
 			}
 		});
 		buttonsPanel.add(button3_3);
@@ -225,7 +227,6 @@ public class Board extends JFrame {
 				button1_3.getText().equals(button2_2.getText()) && button2_2.getText().equals(button3_1.getText())) {
 			return true;
 		}else {
-			resultLabel.setText("Who's gonna win?");
 			return false;
 		}
 	}
@@ -243,5 +244,22 @@ public class Board extends JFrame {
 		winnerPage = new WinnerPage(winResult());
 		winnerPage.getFrame().setVisible(true);
 		winnerPage.passBoardHere(this);
+	}
+	
+	private void openDrawPage() {
+		drawPage = new DrawPage();
+		drawPage.getFrame().setVisible(true);
+		drawPage.passBoardHere(this);
+	}
+	
+	private void checkResult() {
+		clicks++;
+		System.out.print(clicks);
+		if(someoneWin())
+			openWinnerPage();
+		else if(clicks == 9)
+			openDrawPage();
+		else
+			resultLabel.setText("Who's gonna win?");		
 	}
 }

@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 public class Playground {
 
 	private JFrame playgroundFrame;
+	private ChoosePlayer playerchoosing;
+	private EncourageToPlay encourPlay;
 
 	/**
 	 * Launch the application.
@@ -57,7 +59,7 @@ public class Playground {
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				playgroundFrame.dispose();
-				ChoosePlayer playerchoosing = new ChoosePlayer();
+				playerchoosing = new ChoosePlayer();
 				playerchoosing.setVisible(true);
 			}
 		});
@@ -68,7 +70,7 @@ public class Playground {
 		btnMeh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				playgroundFrame.dispose();
-				EncourageToPlay encourPlay = new EncourageToPlay();
+				encourPlay = new EncourageToPlay();
 				encourPlay.setVisible(true);
 			}
 		});
