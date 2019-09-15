@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 public class ChoosePlayer extends JFrame {
 
 	private JPanel contentPane;
-	private String player1;
+	private String firstPlayer;
 	private Board afterBoard;
 
 	/**
@@ -38,7 +38,8 @@ public class ChoosePlayer extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ChoosePlayer() {	
+	public ChoosePlayer() {
+		setTitle("Choose your mark");	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -62,7 +63,7 @@ public class ChoosePlayer extends JFrame {
 		chckbxPlayerX.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chckbxPlayerO.setSelected(false);
-				player1 = "X";
+				firstPlayer = "X";
 				afterBoard = new Board(getPlayer1());
 			}
 		});
@@ -70,7 +71,7 @@ public class ChoosePlayer extends JFrame {
 		chckbxPlayerO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chckbxPlayerX.setSelected(false);
-				player1 = "O";
+				firstPlayer = "O";
 				afterBoard = new Board(getPlayer1());
 			}
 		});
@@ -100,8 +101,13 @@ public class ChoosePlayer extends JFrame {
 		JButton playButton = new JButton("Let's play!");
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				afterBoard.setVisible(true);
+				if(chckbxPlayerX.isSelected() || chckbxPlayerO.isSelected()) {
+					dispose();
+					afterBoard.setVisible(true);
+				}else {
+					MustSelectAPlayer mustHavePlayer = new MustSelectAPlayer();
+					mustHavePlayer.getFrame().setVisible(true);
+				}
 			}
 		});
 		playButton.setBounds(173, 16, 117, 29);
@@ -109,6 +115,6 @@ public class ChoosePlayer extends JFrame {
 	}
 	
 	public String getPlayer1() {
-		return player1;
+		return firstPlayer;
 	}
 }
